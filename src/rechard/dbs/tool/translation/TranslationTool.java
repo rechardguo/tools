@@ -16,6 +16,7 @@ import org.w3c.dom.Node;
  * 写的一个按xlsx里配置的翻译来直接替换对应property或xml里的翻译
  * 当配置好xlsx后，修改45行的Sheet sheet1 = wb.getSheetAt(1);
  * 来读取到不同的sheet里的值并进行配置
+ * 
  * @author rechard
  *
  */
