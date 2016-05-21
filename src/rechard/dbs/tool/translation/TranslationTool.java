@@ -27,7 +27,6 @@ public class TranslationTool {
 	public static void main(String[]args){
 		try {
 			config(TranslationTool.class.getResource("").getPath()+"R12_Translationsv1.1.xlsx");
-			//config(ROOT+"\\Actuate\\BIRT\\S1\\src\\rechard\\dbs\\tool\\translation\\R12_Translationsv1.1.xlsx");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
