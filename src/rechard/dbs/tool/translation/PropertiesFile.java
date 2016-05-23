@@ -33,12 +33,14 @@ public class PropertiesFile extends LinkedHashMap {
 			}else if(line.startsWith("#")){
 				this.put("$"+number++, line);
 			}else{
-				//有可能文件里有key=的情况出现
 				if(line.indexOf("=")!=-1){
 					 String vals[] = line.split("=");
-						this.put(vals[0].trim(), vals[1].trim());
+					//有可能文件里有key=的情况出现
+					 if(vals.length>1)
+					   this.put(vals[0].trim(), vals[1].trim());
+					 else
+						 this.put("$"+number++, line); 
 				}
-				this.put("$"+number++, line);  
 			}
 		}
 		reader.close();

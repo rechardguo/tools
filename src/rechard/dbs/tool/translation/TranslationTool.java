@@ -43,7 +43,7 @@ public class TranslationTool {
 			System.out.println("您输入的excel格式不正确");
 		}
 		//重要点：这里按xlsx里的sheet来改，比如我定义的sheet1是property,sheet2是XML
-		Sheet sheet1 = wb.getSheetAt(1);
+		Sheet sheet1 = wb.getSheetAt(0);
 		Row firstRow = null;
 		for (Row row : sheet1) {
 			//第一行是为了看方便
