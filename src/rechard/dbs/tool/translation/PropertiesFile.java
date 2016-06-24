@@ -33,12 +33,19 @@ public class PropertiesFile extends LinkedHashMap {
 			}else if(line.startsWith("#")){
 				this.put("$"+number++, line);
 			}else{
-				if(line.indexOf("=")!=-1){
+				if(line.indexOf("=")!=-1){					
 					 String vals[] = line.split("=");
 					//有可能文件里有key=的情况出现
-					 if(vals.length>1)
-					   this.put(vals[0].trim(), vals[1].trim());
-					 else
+					 if(vals.length>1){
+						 //有可能有多个 =
+						 String str = "";
+						 for(int i=1;i<vals.length;i++){
+							 str+=vals[i].trim();
+							 if(i>1)
+								 str+="=";
+						 }
+						 this.put(vals[0].trim(),str);
+					 }else
 						 this.put("$"+number++, line); 
 				}
 			}
@@ -46,6 +53,17 @@ public class PropertiesFile extends LinkedHashMap {
 		reader.close();
 	}
 	
+	public Map.Entry findAllValue(String value){
+		Iterator it = entrySet().iterator();
+		StringBuffer sb = new  StringBuffer();
+		while (it.hasNext()) {
+			Map.Entry pairs = (Map.Entry) it.next();
+			if(pairs.getValue().toString().equals(value)){
+				return pairs;
+			}
+		}
+		return null;
+	}
 
 	public void save(){
 		Iterator it = entrySet().iterator();

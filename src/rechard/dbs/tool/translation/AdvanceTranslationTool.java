@@ -3,6 +3,8 @@ package rechard.dbs.tool.translation;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -11,7 +13,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 /**
  * 写的一个按xlsx里配置的翻译来直接替换对应property或xml里的翻译
  * 当配置好xlsx后，修改45行的Sheet sheet1 = wb.getSheetAt(1);
@@ -20,13 +21,13 @@ import org.w3c.dom.Node;
  * @author rechard
  *
  */
-public class TranslationTool {
+public class AdvanceTranslationTool {
 	static String filename="";
 	static String ROOT="D:\\code\\DBS_CB\\CORP_PSO_SRC";
 	static Element xmlpsoElement=null;
 	public static void main(String[]args){
 		try {
-			config("D:/workspace/tools/src/rechard/dbs/tool/translation/R12_Translationsv1.1.xlsx");
+			config("D:/workspace/tools/src/rechard/dbs/tool/translation/Translations.xlsx");
 			//config(TranslationTool.class.getResource("").getPath()+"R12_Translationsv1.1.xlsx");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,7 +45,7 @@ public class TranslationTool {
 			System.out.println("您输入的excel格式不正确");
 		}
 		//重要点：这里按xlsx里的sheet来改，比如我定义的sheet1是property,sheet2是XML
-		Sheet sheet1 = wb.getSheetAt(1);
+		Sheet sheet1 = wb.getSheetAt(0);
 		Row firstRow = null;
 		for (Row row : sheet1) {
 			//第一行是为了看方便
@@ -54,36 +55,32 @@ public class TranslationTool {
 					//  System.out.print(cell.getStringCellValue()+",");
 				}
 			}else{
-				String fileName=null;
-				String key=null;
-				String value=null;
+				
+				Map m = new HashMap();
 				for (Cell cell : row) {
-					if(cell.getColumnIndex()==0)
-						fileName=cell.getStringCellValue().trim();
-					else if(cell.getColumnIndex()==1)
-						key=cell.getStringCellValue().trim();
-					else{
-						value=cell.getStringCellValue().trim();
-						String ctry = firstRow.getCell(cell.getColumnIndex()).getStringCellValue();
-						if(ctry.equals("EN")){
-							ctry="pso";
-						}
-						if(fileName==null) continue;
-						if(fileName.endsWith("properties"))	{
-							if(ctry.startsWith("zh_")){
-								value=UnicodeUtil.gbEncoding(value);
-							}
-							writePropertyFile(fileName, key, value,  ctry);
-						}
-						if(fileName.endsWith("xml")){
-							
-							writeXmlFile(fileName, key, value, ctry);
-						}
+					String value=cell.getStringCellValue().trim();
+					String ctry = firstRow.getCell(cell.getColumnIndex()).getStringCellValue();
+					m.put(ctry, value);
+				}
+				if(m!=null){
+					ListTool lt = new ListTool();					
+					lt.searchReplaceStrInFile(ListTool.PROPERTY_ROOT,m,true);
+					lt.searchReplaceStrInFile(ListTool.XML_ROOT,m,true);
+				}
+				/*if(fileName.endsWith("properties"))	{
+					if(ctry.startsWith("zh_")){
+						value=UnicodeUtil.gbEncoding(value);
 					}
+					writePropertyFile(fileName, key, value,  ctry);
+				}
+				if(fileName.endsWith("xml")){
+					
+					writeXmlFile(fileName, key, value, ctry);
+				}*/
+				
+				
 				}
 			}
-
-		}
 		if(wb!=null)
 		wb.close();
 		if(stream!=null)

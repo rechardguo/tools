@@ -30,7 +30,7 @@ public class CopyModifyFileTool {
 				
 				//System.out.println(line);
 				File f =new File(ROOT+line);
-				String f2str = "D://CODE//"+line;
+				String f2str = "D://HOTFIXCODE//"+line;
 				new File(f2str).getParentFile().mkdirs();
 				forChannel(f,new File(f2str));
 				
@@ -52,6 +52,8 @@ public class CopyModifyFileTool {
 	public static long forChannel(File f1,File f2) throws Exception{
         long time=new Date().getTime();
         int length=2097152;
+        if(!f1.exists())
+        	System.out.println(f1.getAbsoluteFile().toString()+"is not exist");
         FileInputStream in=new FileInputStream(f1);
         FileOutputStream out=new FileOutputStream(f2);
         FileChannel inC=in.getChannel();

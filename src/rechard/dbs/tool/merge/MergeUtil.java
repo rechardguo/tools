@@ -1,4 +1,4 @@
-package rechard.dbs.tool.simulate;
+package rechard.dbs.tool.merge;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,9 +10,9 @@ import java.io.InputStreamReader;
 
 public class MergeUtil {
 
-	static String file ="D:\\merge\\mergerlist.txt";
-	static String branch_dev="D:\\code\\DBS_CB\\CORP_PSO_SRC£¨ant»áµÇÂ½²»ÁË£©\\";
-	static String branch_merge="D:\\code\\DBS_CB\\CORP_PSO_SRC\\";
+	static String file ="D:\\merge\\mergelist.txt";
+	static String branch_dev="D:\\code\\DBS_CB\\CORP_PSO_SRC";
+	static String branch_merge="D:\\code\\DBS_CB\\CORP_PSO_SRC-R12";
 	static String folder_dev="D:\\merge\\branch_dev\\";
 	static String folder_merge="D:\\merge\\branch_merge\\";
 	public static void main(String[]args){
@@ -65,6 +65,7 @@ public class MergeUtil {
         try {
         	File srcFile = new File(srcFileName);
         	File destFile = new File(destFileName);
+        	
         	if(!destFile.getParentFile().exists()){
         		destFile.getParentFile().mkdirs();
         	}
