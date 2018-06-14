@@ -1,2 +1,0 @@
-/psobank_ejb/ejbModule/com/s1/pso2/mq/mqrequest/act/PSO2MQActValueHandler.class
-/psobank_ejb/ejbModule/com/s1/pso2/mq/mqrequest/tt/PSO2MQTtValueHandler.class
