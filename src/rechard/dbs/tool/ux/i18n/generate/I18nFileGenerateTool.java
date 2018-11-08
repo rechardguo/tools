@@ -29,9 +29,6 @@ import java.util.Set;
  *
  */
 public class I18nFileGenerateTool {
-    static String filename="";
-    static String ROOT="D:\\code\\DBS_CB\\CORP_PSO_SRC";
-    static Element xmlpsoElement=null;
     //args 0 en.json file
     //args 1 affiliate
     //args 3 excel file
