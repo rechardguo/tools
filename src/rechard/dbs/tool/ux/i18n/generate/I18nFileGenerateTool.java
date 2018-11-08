@@ -29,12 +29,7 @@ import java.util.Set;
  *
  */
 public class I18nFileGenerateTool {
-    //args 0 en.json file
-    //args 1 affiliate
-    //args 3 excel file
-    //args 4 enColIndex
-    //args 5 affColIndex
-    //args 6 genrate file path
+
     public static void main(String[]args)throws Exception{
         //1. 读取en.json  file 封装成json对象
         JSONObject jsonObject = new JSONObject(FileTool.read("D:\\DOC\\R18\\i18n\\en.json"));
