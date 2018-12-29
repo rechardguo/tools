@@ -95,7 +95,7 @@ public class ProxyTool {
                 response.close();
             }
         }catch(ConnectException e){
-            logger.info("validate "+ proxy +"time out");
+            logger.info("validate "+ proxy +" time out");
             return  false;
         }catch (Exception e){
             e.printStackTrace();
