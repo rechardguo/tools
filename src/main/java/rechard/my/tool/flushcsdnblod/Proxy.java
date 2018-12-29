@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Proxy {
    private String ip;
    private String port;
-   private AtomicInteger invalidateCount;
+   private AtomicInteger invalidateCount=new AtomicInteger(0);
    private long reponseTime;//unit is millsecond
 
 

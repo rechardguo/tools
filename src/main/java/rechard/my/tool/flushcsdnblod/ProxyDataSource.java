@@ -53,7 +53,7 @@ public class ProxyDataSource {
         new File(file).deleteOnExit();
         openFile();
         collection.stream().filter(p->p.getInvalidateCount()<4).forEach(p->record(
-                p.getIp()+":"+p.getPort()+":"+p.getInvalidateCount()
+                p.getIp()+":"+p.getPort()+":"+p.getInvalidateCount()+System.lineSeparator()
         ));
         }finally {
             lock.unlock();
