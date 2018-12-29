@@ -37,7 +37,7 @@ public class FlushTool {
 
     public static void flush(String articleUrl)throws Exception{
         logger.info("start flush articleUrl >>>>>");
-        Collection<Proxy> list = ProxyPool.getProxys();
+        Collection<Proxy> list = ProxyPool.getProxies();
         for (Proxy proxy:list ) {
             Future f=es.submit(new Worker(articleUrl,proxy));
         }
@@ -93,16 +93,23 @@ public class FlushTool {
             this.proxy = proxy;
         }
         public void run() {
+            int code=0;
             try {
                 logger.info("start to flush url : "+ url+" with proxy : "+proxy);
-                int code= FlushTool.flush(url,proxy);
+                code=FlushTool.flush(url,proxy);
                 if(code==200)
                     logger.info("success to flush url : "+ url+" with proxy : "+proxy);
-                else
-                    logger.error("error to flush url : "+ url+" with proxy : "+proxy+",response code "+code );
+                else {
+                    logger.error("error to flush url : " + url + " with proxy : " + proxy + ",response code " + code);
+                }
             } catch (Exception e) {
                 logger.error("fail to flush url: "+
                         url+" with proxy : "+proxy+",with exception "+e.getMessage()           );
+            }
+            //如果刷新不成功,更新不成功数
+            if(code!=200) {
+                proxy.increaseInvalidateCount();
+                ProxyPool.update(proxy);
             }
         }
     }

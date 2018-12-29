@@ -13,6 +13,9 @@ public class ProxyCollectors {
         collections.add(collector);
     }
 
+    /**
+     * 启动从不同的网址里取爬取到ip:port,并对这些ip:port进行校验
+     */
     public static void start(){
         collections.forEach(
                 (proxyCollector) -> {

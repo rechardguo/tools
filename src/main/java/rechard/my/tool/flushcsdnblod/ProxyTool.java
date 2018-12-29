@@ -27,9 +27,34 @@ import java.util.stream.Collectors;
 
 public class ProxyTool {
     static final Logger logger = LoggerFactory.getLogger(ProxyTool.class);
+
+    /**
+     * 对proxy经行校验，如果有效的就记录
+     * @param proxy
+     * @param urlstr
+     * @return
+     * @throws Exception
+     */
+    public static boolean validateAndRecord(Proxy proxy, String urlstr) throws Exception{
+        logger.info("validate "+proxy);
+        if(ProxyPool.contains(proxy)){
+            logger.info("skip proxy "+proxy+"already collected!");
+        }
+        long start=System.currentTimeMillis();
+        boolean validate=ProxyTool.validete(proxy,urlstr);
+        long end=System.currentTimeMillis();
+        if(validate) {
+            long responseTime=end-start;
+            proxy.setReponseTime(responseTime);
+            ProxyPool.update(proxy);
+            logger.info("validate and get one proxy: "+ proxy );
+        }
+        return validate;
+    }
+
     public static boolean validateAndRecordInDB(Proxy proxy, String urlstr) throws Exception{
         logger.info("validate "+proxy);
-        Collection<Proxy> proxies = ProxyPool.getProxys();
+        Collection<Proxy> proxies = ProxyPool.getProxies();
         if(proxies.contains(proxy)){
             logger.info("skip proxy "+proxy+"already collected!");
         }
@@ -38,6 +63,7 @@ public class ProxyTool {
         long end=System.currentTimeMillis();
         if(validate) {
             long responseTime=end-start;
+            proxy.setReponseTime(responseTime);
             ProxyDataSource.record(proxy.toString() + System.getProperty("line.separator"));
             logger.info("validate and get one proxy: "+ proxy );
         }
