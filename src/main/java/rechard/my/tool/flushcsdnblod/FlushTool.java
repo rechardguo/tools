@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 public class FlushTool {
     static Logger logger= LoggerFactory.getLogger(FlushTool.class);
-    static ExecutorService es = Executors.newFixedThreadPool(40);
+    static ExecutorService es = Executors.newFixedThreadPool(Config.getIntProperty(Config.FLUSH_THREAD_NUMBER));
     public static void startFlush(String[] blogUrls){
         new Thread(()->{
             int count=0;
@@ -109,8 +109,10 @@ public class FlushTool {
             //如果刷新不成功,更新不成功数
             if(code!=200) {
                 proxy.increaseInvalidateCount();
-                ProxyPool.update(proxy);
+            }else{
+                proxy.decreaseInvalidateCount();
             }
+            ProxyPool.update(proxy);
         }
     }
 }

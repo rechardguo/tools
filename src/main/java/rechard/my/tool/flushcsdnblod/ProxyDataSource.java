@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 public class ProxyDataSource {
     static FileChannel fileChannel;
-    static String file="D://ip_datasource.txt";
+    static String file=Config.getStringProperty(Config.PROXY_PERSIST_FILE);
     static Lock lock=new ReentrantLock();
     static Logger logger= LoggerFactory.getLogger(ProxyDataSource.class);
     static {
@@ -30,37 +30,37 @@ public class ProxyDataSource {
     }
 
     private static void openFile() throws Exception{
-        Path path = FileSystems.getDefault().getPath("D://", "ip_datasource.txt");
-        fileChannel = FileChannel.open(path,
-                StandardOpenOption.CREATE, StandardOpenOption.APPEND, StandardOpenOption.WRITE);
+        //Path path = FileSystems.getDefault().getPath("D://", "ip_datasource.txt");
+        RandomAccessFile raf=new RandomAccessFile(file,"rwd");
+        fileChannel = raf.getChannel();
+        /*fileChannel = FileChannel.open(path,
+                StandardOpenOption.CREATE, StandardOpenOption.APPEND, StandardOpenOption.WRITE);*/
     }
 
     public static  void record(String str){
         ByteBuffer bb=ByteBuffer.wrap(str.getBytes());
         try {
-            lock.lock();
+            // lock.lock();
             fileChannel.write(bb);
         } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
+            logger.error("error in save proxy to file ,"+ e.getMessage());
+            // e.printStackTrace();
+        }/*finally {
             lock.unlock();
-        }
+        }*/
     }
 
     public static void updateLatest(Collection<Proxy> collection) throws Exception {
-        try{
-        lock.lock();
-        new File(file).deleteOnExit();
-        openFile();
-        collection.stream().filter(p->p.getInvalidateCount()<4).forEach(p->record(
+        //try{
+        //lock.lock();
+        fileChannel.truncate(0);
+        collection.stream().filter(p->p.getInvalidateCount()<4&&p.getInvalidateCount()>-1).forEach(p->record(
                 p.getIp()+":"+p.getPort()+":"+p.getInvalidateCount()+System.lineSeparator()
         ));
-        }finally {
+        /*}finally {
             lock.unlock();
-        }
+        }*/
     }
-
-
     public static Collection<Proxy> read() throws Exception{
         Collection<Proxy> collection= new HashSet<>();
         FileInputStream inputstream = new FileInputStream(file);

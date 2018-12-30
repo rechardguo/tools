@@ -9,9 +9,10 @@ public abstract class ProxyCollector implements Runnable {
     public  Logger logger= LoggerFactory.getLogger(this.getClass());
     public void run(){
         logger.info("start collect proxy");
-        Collection<Proxy> proxies=collect();
+        collect();
+        //Collection<Proxy> proxies=collect();
         logger.info("end start collect proxy");
-        ProxyFilterCollector.put(proxies);
+        //ProxyFilterCollector.put(proxies);
     }
-    abstract Collection<Proxy> collect();
+    public abstract Collection<Proxy> collect();
 }

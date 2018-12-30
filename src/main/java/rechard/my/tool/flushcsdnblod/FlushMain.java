@@ -1,10 +1,15 @@
 package rechard.my.tool.flushcsdnblod;
 
+import rechard.my.tool.flushcsdnblod.extractor.ProxygaoniExtractor;
+import rechard.my.tool.flushcsdnblod.extractor.ProxykuaidailiExtractor;
+import rechard.my.tool.flushcsdnblod.extractor.ProxyxicidailiExtractor;
+
 public class FlushMain {
     //收集代理
     private void collectProxy(){
         ProxyCollectors.addCollector(new ProxyxicidailiExtractor());
         ProxyCollectors.addCollector(new ProxykuaidailiExtractor());
+        ProxyCollectors.addCollector(new ProxygaoniExtractor());
         ProxyCollectors.start();
     }
 
@@ -22,7 +27,12 @@ public class FlushMain {
         fm.start(new String[]{
                 "https://blog.csdn.net/guo_xl/article/details/78858959",
                 "https://blog.csdn.net/guo_xl/article/details/79534887",
-                "https://blog.csdn.net/guo_xl/article/details/83927944"});
+                "https://blog.csdn.net/guo_xl/article/details/83927983",
+                "https://blog.csdn.net/guo_xl/article/details/79605578",
+                "https://blog.csdn.net/guo_xl/article/details/85165333",
+                "https://blog.csdn.net/guo_xl/article/details/83716342",
+                "https://blog.csdn.net/guo_xl/article/details/83384755"
+        });
     }
 
 

@@ -9,11 +9,15 @@ import java.util.concurrent.*;
 public class ProxyFilterCollector {
 
     private ProxyFilterCollector(){}
-    private static final String URL="http://www.baidu.com/";
+    private static final String URL=Config.getStringProperty(Config.PROXY_VALIDATION_URL);
     static Logger logger = LoggerFactory.getLogger(ProxyFilterCollector.class);
 
     //收集到的proxy放到这个队列里
-    public static volatile LinkedBlockingQueue<Proxy> queue=new LinkedBlockingQueue<>();
+    private static volatile LinkedBlockingQueue<Proxy> queue=new LinkedBlockingQueue<>();
+
+    public static void put(Proxy proxy){
+        queue.add(proxy);
+    }
 
     public static void put(Collection<Proxy> proxies){
           queue.addAll(proxies);
@@ -23,7 +27,7 @@ public class ProxyFilterCollector {
      * 通过从queue里获取到proxy,进行校验
      */
     public static void startValidate(){
-        ExecutorService es=Executors.newFixedThreadPool(50);
+        ExecutorService es=Executors.newFixedThreadPool(Config.getIntProperty(Config.PROXY_VALIDATION_THREAD_NUMBER));
         new Thread(()->{
             for(;;) {
                 try {

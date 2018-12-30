@@ -1,8 +1,11 @@
-package rechard.my.tool.flushcsdnblod;
+package rechard.my.tool.flushcsdnblod.extractor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
+import rechard.my.tool.flushcsdnblod.Proxy;
+import rechard.my.tool.flushcsdnblod.ProxyCollector;
+import rechard.my.tool.flushcsdnblod.ProxyTool;
 
 import java.util.ArrayList;
 import java.util.Collection;

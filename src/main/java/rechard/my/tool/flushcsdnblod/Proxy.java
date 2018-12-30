@@ -30,6 +30,11 @@ public class Proxy {
     public int increaseInvalidateCount() {
        return this.invalidateCount.incrementAndGet();
     }
+
+    public void decreaseInvalidateCount(){
+        this.invalidateCount.decrementAndGet();
+    }
+
     public int getInvalidateCount(){
         return this.invalidateCount.intValue();
     }
