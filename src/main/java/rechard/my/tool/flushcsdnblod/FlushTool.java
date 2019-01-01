@@ -39,7 +39,10 @@ public class FlushTool {
         logger.info("start flush articleUrl >>>>>");
         Collection<Proxy> list = ProxyPool.getProxies();
         for (Proxy proxy:list ) {
-            Future f=es.submit(new Worker(articleUrl,proxy));
+            //访问不成功-1,invalidatecount有可能减到负数
+            if(Math.abs(proxy.getInvalidateCount())<Config.getIntProperty(Config.PRPXY_INVALIDATE_ACCESS_NUMBER)) {
+                Future f = es.submit(new Worker(articleUrl, proxy));
+            }
         }
     }
 

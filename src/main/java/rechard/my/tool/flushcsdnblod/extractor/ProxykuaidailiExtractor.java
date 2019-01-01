@@ -16,7 +16,7 @@ public class ProxykuaidailiExtractor extends ProxyCollector {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     String url ="https://www.kuaidaili.com/free/inha/";
     List<Proxy> list = new ArrayList<>();
-    public Collection<Proxy> collect(){
+    public void collect(){
             String content = null;
             try {
                 logger.info("collect url from :"+url);
@@ -48,6 +48,5 @@ public class ProxykuaidailiExtractor extends ProxyCollector {
                 logger.error("error occur while collect proxy"+e.getMessage());
             }
         logger.info("find total proxy"+list.size());
-        return list;
     }
 }

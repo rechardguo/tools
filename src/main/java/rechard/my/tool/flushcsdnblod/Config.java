@@ -13,6 +13,7 @@ public class Config {
     public static final String PROXY_VALIDATION_URL = "proxy.validation.url";
     public static final String PROXY_VALIDATION_THREAD_NUMBER = "proxy.validation.threads.number";
     public static final String FLUSH_THREAD_NUMBER = "flush.threads.number";
+    public static final String PRPXY_INVALIDATE_ACCESS_NUMBER = "proxy.invalidate.access.number";
 
     private static Logger logger= LoggerFactory.getLogger(Config.class);
 

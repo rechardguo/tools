@@ -2,6 +2,7 @@ package rechard.my.tool.flushcsdnblod;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -120,7 +121,7 @@ public class ProxyTool {
             httpget.addHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36");
             CloseableHttpResponse response = httpclient.execute(target, httpget);
             try {
-                return  response.getStatusLine().getStatusCode()==200;
+                return  response.getStatusLine().getStatusCode()== HttpStatus.SC_OK;
             } finally {
                 response.close();
             }

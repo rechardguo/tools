@@ -31,7 +31,15 @@ public class FlushMain {
                 "https://blog.csdn.net/guo_xl/article/details/79605578",
                 "https://blog.csdn.net/guo_xl/article/details/85165333",
                 "https://blog.csdn.net/guo_xl/article/details/83716342",
-                "https://blog.csdn.net/guo_xl/article/details/83384755"
+                "https://blog.csdn.net/guo_xl/article/details/83384755",
+                "https://blog.csdn.net/guo_xl/article/details/84942404",
+                "https://blog.csdn.net/guo_xl/article/details/84111835",
+                "https://blog.csdn.net/guo_xl/article/details/83883746",
+                "https://blog.csdn.net/guo_xl/article/details/83384755",
+                "https://blog.csdn.net/guo_xl/article/details/82388273",
+                "https://blog.csdn.net/guo_xl/article/details/82110659",
+                "https://blog.csdn.net/guo_xl/article/details/79534734",
+                "https://blog.csdn.net/guo_xl/article/details/85068719"
         });
     }
 

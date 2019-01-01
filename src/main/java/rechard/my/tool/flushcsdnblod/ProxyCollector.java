@@ -14,5 +14,5 @@ public abstract class ProxyCollector implements Runnable {
         logger.info("end start collect proxy");
         //ProxyFilterCollector.put(proxies);
     }
-    public abstract Collection<Proxy> collect();
+    public abstract void collect();
 }

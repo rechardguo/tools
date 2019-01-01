@@ -51,15 +51,13 @@ public class ProxyDataSource {
     }
 
     public static void updateLatest(Collection<Proxy> collection) throws Exception {
-        //try{
-        //lock.lock();
+        String str=collection.stream().map(p->{return
+                                p.getIp()+":"
+                                +p.getPort()+":"
+                                +p.getInvalidateCount();})
+                .collect(Collectors.joining(System.lineSeparator()));
         fileChannel.truncate(0);
-        collection.stream().filter(p->p.getInvalidateCount()<4&&p.getInvalidateCount()>-1).forEach(p->record(
-                p.getIp()+":"+p.getPort()+":"+p.getInvalidateCount()+System.lineSeparator()
-        ));
-        /*}finally {
-            lock.unlock();
-        }*/
+        record(str);
     }
     public static Collection<Proxy> read() throws Exception{
         Collection<Proxy> collection= new HashSet<>();

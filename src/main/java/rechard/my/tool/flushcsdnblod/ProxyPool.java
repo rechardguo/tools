@@ -50,8 +50,10 @@ public class ProxyPool {
                     ProxyDataSource.updateLatest(proxiesCache);
                     Thread.sleep(60000);
                 } catch (Exception e) {
+                    e.printStackTrace();
                     logger.error("schedule update proxy datasource exception:" + e.getMessage());
                 }
+
             }
         },"ProxyPool").start();
     }
