@@ -51,6 +51,15 @@ public class ${objectNameFirstUpper}Criteria implements Criteria {
 	 <#if var[1]=='LONG'>
 	    private long ${var[2]};			
 	 </#if>
+	 <#if var[1]=='DATE'>
+       private Date ${var[2]};
+	 </#if>
+	 <#if var[1]=='DATETIME'>
+       private DateTime ${var[2]};
+	 </#if>
+	 <#if var[1]=='DOUBLE'>
+       private double ${var[2]};
+	 </#if>
 	</#list>
     /**
 	 * @return the objectId
@@ -125,5 +134,29 @@ public class ${objectNameFirstUpper}Criteria implements Criteria {
 			this.${var[2]} = ${var[2]};
 		 }		
 	 </#if>
+		<#if var[1]=='DATE'>
+        public Date get${var[2]?cap_first}() {
+       	 	return ${var[2]};
+        }
+        public void set${var[2]?cap_first}(long ${var[2]}) {
+        	this.${var[2]} = ${var[2]};
+        }
+	</#if>
+	<#if var[1]=='DATETIME'>
+		public DateTime get${var[2]?cap_first}() {
+			return ${var[2]};
+		}
+		public void set${var[2]?cap_first}(long ${var[2]}) {
+			this.${var[2]} = ${var[2]};
+		}
+	</#if>
+	<#if var[1]=='DOUBLE'>
+        public double get${var[2]?cap_first}() {
+        	return ${var[2]};
+        }
+        public void set${var[2]?cap_first}(long ${var[2]}) {
+        	this.${var[2]} = ${var[2]};
+        }
+	</#if>
 	</#list>
 }

@@ -129,6 +129,15 @@ public class ${objectNameFirstUpper}Dao extends PersistencePeer{
 					 <#if var[1]=='LONG'>
 					   mapping.setLong(COL_${var[0]}, pd.get${var[2]?cap_first}());				
 					 </#if>
+                    <#if var[1]=='DATE'>
+                        mapping.setDate(COL_${var[0]}, pd.get${var[2]?cap_first}());
+                    </#if>
+                    <#if var[1]=='DATETIME'>
+                        mapping.setDateTime(COL_${var[0]}, pd.get${var[2]?cap_first}());
+                    </#if>
+                    <#if var[1]=='DOUBLE'>
+                        mapping.setDouble(COL_${var[0]}, pd.get${var[2]?cap_first}());
+                    </#if>
 				</#list>				
             
             return mapping;
@@ -166,6 +175,21 @@ public class ${objectNameFirstUpper}Dao extends PersistencePeer{
    <#if var[1]=='STRING'>
 			result.set${var[2]?cap_first}(rs.getString(COL_${var[0]}));
    </#if>
+    <#if var[1]=='INTEGER'>
+        result.set${var[2]?cap_first}(rs.getInt(COL_${var[0]}));
+    </#if>
+    <#if var[1]=='BOOLEAN'>
+        result.set${var[2]?cap_first}(rs.getBoolean(COL_${var[0]}));
+    </#if>
+    <#if var[1]=='LONG'>
+        result.set${var[2]?cap_first}(rs.getLong(COL_${var[0]}));
+    </#if>
+    <#if var[1]=='DATE'>
+        result.set${var[2]?cap_first}(rs.getDate(COL_${var[0]}));
+    </#if>
+    <#if var[1]=='DATETIME'>
+        result.set${var[2]?cap_first}(rs.getTimestamp(COL_${var[0]}));
+    </#if>
 </#list>
             return result;
         }catch (Exception e) {

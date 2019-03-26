@@ -3,7 +3,15 @@ CREATE TABLE `${tableName}` (
 		<#if var[1] == 'PRIMARY'>
 			`${tableName}KY` int(11) NOT NULL PRIMARY KEY,
 		<#elseif var[1] == 'INTEGER'>
-			`${var[0]}` int(11),		
+			`${var[0]}` int(11),
+		<#elseif var[1] == 'LONG'>
+             `${var[0]}` bigint,
+		<#elseif var[1] == 'DATE'>
+            `${var[0]}` date,
+		<#elseif var[1] == 'DATETIME'>
+            `${var[0]}` datetime,
+		<#elseif var[1] == 'DOUBLE'>
+        	`${var[0]}` double,
 		<#else>
 			`${var[0]}` varchar(100),
 		</#if>

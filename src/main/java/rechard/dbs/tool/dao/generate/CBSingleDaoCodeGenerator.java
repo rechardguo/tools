@@ -7,14 +7,23 @@ public class CBSingleDaoCodeGenerator {
 	
 	/////////////////////////////配置项,手动添加这里-begin////////////////////
 	String filePath = "D://autoGenerate//";									//代码生成存放路径
-	String packageName = "com.s1.pso21.digi.dao";  								//包名
-	String objectName = "PSO21DIGI";	   						//类名
-	String tableName = "PSO21DIGI";	   						//表名
+	String packageName = "com.s1.pso22.digidoc.dao";  								//包名
+	String objectName = "PSO22INCOMETRANSFER";	   						//类名
+	String tableName = "PSO22INCOMETRANSFER";	   						//表名
 	static {
-		//属性集合:数据库名,主键
-		fieldList.add(new String[]{"PSO21DIGIKY",Fields.PRIMARY.toString()});
+		//数据库键名，属性，类里对应的属性名
+		fieldList.add(new String[]{"PSO22INCOMETRANSFERKY",Fields.PRIMARY.toString()});
 		//属性集合:数据库名,类型,类里的field		
 		fieldList.add(new String[]{"REFERENCE",Fields.STRING.toString(),"reference"});
+		fieldList.add(new String[]{"AMOUNT",Fields.DOUBLE.toString(),"amount"});
+		fieldList.add(new String[]{"CURRENCY",Fields.STRING.toString(),"ccy"});
+		fieldList.add(new String[]{"PAYER",Fields.STRING.toString(),"peryer"});
+		fieldList.add(new String[]{"PAYERBANK",Fields.STRING.toString(),"peryerbank"});
+		fieldList.add(new String[]{"RECEIVER",Fields.STRING.toString(),"receiver"});
+		fieldList.add(new String[]{"RECEIVERBANK",Fields.STRING.toString(),"receiverbank"});
+		fieldList.add(new String[]{"STATUS",Fields.INTEGER.toString(),"status"});
+		fieldList.add(new String[]{"APPROVALNUM",Fields.INTEGER.toString(),"approvalNum"});
+		fieldList.add(new String[]{"APPROVEDNUM",Fields.INTEGER.toString(),"approvedNum"});
 		//fieldList.add(new String[]{"ACCTCCY",Fields.STRING.toString(),"acctCcy"});
 		//fieldList.add(new String[]{"INDICATOR",Fields.STRING.toString(),"indicator"});
 		//fieldList.add(new String[]{"CORCUSTOMERKY",Fields.INTEGER.toString(),"corCustomerky"});
