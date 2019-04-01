@@ -150,7 +150,7 @@ public class ${objectNameFirstUpper} extends BaseValue {
         public double get${var[2]?cap_first}() {
         return ${var[2]};
         }
-        public void set${var[2]?cap_first}(long ${var[2]}) {
+        public void set${var[2]?cap_first}(double ${var[2]}) {
         this.${var[2]} = ${var[2]};
         }
 		</#if>
