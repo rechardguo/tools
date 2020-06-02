@@ -12,11 +12,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 /**
- * ÕâÀïĞ´propertiesFile¶ø²»ÓÃpropetiesÀà£¬
- * ÓÉÓÚpropetiesÊÇ¼Ì³Ğhashtable,ÔÚ°ÑpropertiesµÄÖµ¶ÁÈëµ½hashtableºó£¬
- * »á²»°´Ë³ĞòÀ´´æ£¬¶øÊÇ°´hashÖµ±£´æ¡£
- * ÕâÑùµ¼ÖÂĞŞ¸ÄÖµºóµ÷ÓÃpropeties.store()£¬
- * Õû¸öÎÄ¼şÔ­À´µÄĞĞµÄË³Ğò»á´òÂÒ£¬±äµÃºÜÂÒ¡£
+ * è¿™é‡Œå†™propertiesFileè€Œä¸ç”¨propetiesç±»ï¼Œ
+ * ç”±äºpropetiesæ˜¯ç»§æ‰¿hashtable,åœ¨æŠŠpropertiesçš„å€¼è¯»å…¥åˆ°hashtableåï¼Œ
+ * ä¼šä¸æŒ‰é¡ºåºæ¥å­˜ï¼Œè€Œæ˜¯æŒ‰hashå€¼ä¿å­˜ã€‚
+ * è¿™æ ·å¯¼è‡´ä¿®æ”¹å€¼åè°ƒç”¨propeties.store()ï¼Œ
+ * æ•´ä¸ªæ–‡ä»¶åŸæ¥çš„è¡Œçš„é¡ºåºä¼šæ‰“ä¹±ï¼Œå˜å¾—å¾ˆä¹±ã€‚
  * @author rechard
  *
  */
@@ -35,9 +35,9 @@ public class PropertiesFile extends LinkedHashMap {
 			}else{
 				if(line.indexOf("=")!=-1){					
 					 String vals[] = line.split("=");
-					//ÓĞ¿ÉÄÜÎÄ¼şÀïÓĞkey=µÄÇé¿ö³öÏÖ
+					//æœ‰å¯èƒ½æ–‡ä»¶é‡Œæœ‰key=çš„æƒ…å†µå‡ºç°
 					 if(vals.length>1){
-						 //ÓĞ¿ÉÄÜÓĞ¶à¸ö =
+						 //æœ‰å¯èƒ½æœ‰å¤šä¸ª =
 						 String str = "";
 						 for(int i=1;i<vals.length;i++){
 							 str+=vals[i].trim();

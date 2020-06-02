@@ -23,7 +23,7 @@ public class ListTool {
 
 	private static int searchCount=0;
 
-	//²éÑ¯×Ö·û´ÓÆÕÍ¨ÎÄ¼þ
+	//æŸ¥è¯¢å­—ç¬¦ä»Žæ™®é€šæ–‡ä»¶
 	void searchStrInXml(InputStream is, String fileName,String searchStr, int buf) throws IOException {
 		searchStrInInputStream(fileName, searchStr, buf, is);
 	}
@@ -32,11 +32,11 @@ public class ListTool {
 		searchStrInTxt(new FileInputStream(new File(file)),file, searchStr, buf);
 	}
 
-	//²éÑ¯×Ö·û´ÓÆÕÍ¨ÎÄ¼þ
+	//æŸ¥è¯¢å­—ç¬¦ä»Žæ™®é€šæ–‡ä»¶
 	void searchStrInTxt(InputStream is, String fileName,String searchStr, int buf) throws IOException {
 		searchStrInInputStream(fileName, searchStr, buf, is);
 	}
-	//²éÑ¯×Ö·û´ÓÖ¸¶¨InputStream
+	//æŸ¥è¯¢å­—ç¬¦ä»ŽæŒ‡å®šInputStream
 	private void searchStrInInputStream(String fileName, String searchStr, int buf, InputStream is) throws IOException{
 		searchStrInBufferedReader(fileName, searchStr, buf, new BufferedReader(new InputStreamReader(is)));
 	}
@@ -44,7 +44,7 @@ public class ListTool {
 		char[] blocks = new char[buf];
 		int length = searchStr.length();
 		if (buf < length) {
-			throw new IOException("¶ÁÈ¡´óÐ¡²»ÄÜÐ¡ÓÚËÑË÷×Ö·û´®µÄ³¤¶È");
+			throw new IOException("è¯»å–å¤§å°ä¸èƒ½å°äºŽæœç´¢å­—ç¬¦ä¸²çš„é•¿åº¦");
 		}
 		String preStr = null;
 		while (r.read(blocks) != -1) {
@@ -87,7 +87,7 @@ public class ListTool {
 		}
 	}
 
-	//²éÑ¯×Ö·û´ÓÖ¸¶¨ÎÄ¼þ»òÄ¿Â¼
+	//æŸ¥è¯¢å­—ç¬¦ä»ŽæŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•
 	void searchStrInFile(String dir, String searchStr, boolean recurse) {
 		String fileName = null;
 		try {

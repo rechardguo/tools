@@ -54,19 +54,19 @@ public class CBSingleDaoCodeGenerator {
 		/* ============================================================================================= */
 		
 		/*生成data*/
-		Freemarker.printFile("Data.ftl", root, packageName.replaceAll(".", "/")+"/"+objectNameFirstUpper+".java", filePath);
+		Freemarker.printFile("Template","Data.ftl", root, packageName.replaceAll(".", "/")+"/"+objectNameFirstUpper+".java", filePath);
 
 		/*生成dao*/
-		Freemarker.printFile("Dao.ftl", root, packageName.replaceAll(".", "/")+"/"+objectNameFirstUpper+"Dao.java", filePath);
+		Freemarker.printFile("Template","Dao.ftl", root, packageName.replaceAll(".", "/")+"/"+objectNameFirstUpper+"Dao.java", filePath);
 		
 		/*生成Criteria*/
-		Freemarker.printFile("Criteria.ftl", root, packageName.replaceAll(".", "/")+"/"+objectNameFirstUpper+"Criteria.java", filePath);
+		Freemarker.printFile("Template","Criteria.ftl", root, packageName.replaceAll(".", "/")+"/"+objectNameFirstUpper+"Criteria.java", filePath);
 
 		/*生成sql*/
-		Freemarker.printFile("Sql.ftl", root, packageName.replaceAll(".", "/")+"/"+"ddl.sql", filePath);
+		Freemarker.printFile("Template","Sql.ftl", root, packageName.replaceAll(".", "/")+"/"+"ddl.sql", filePath);
 		
 		/*生成说明*/
-		Freemarker.printFile("Note.ftl", root, packageName.replaceAll(".", "/")+"/note.txt", filePath);
+		Freemarker.printFile("Template","Note.ftl", root, packageName.replaceAll(".", "/")+"/note.txt", filePath);
 
 	}
 	

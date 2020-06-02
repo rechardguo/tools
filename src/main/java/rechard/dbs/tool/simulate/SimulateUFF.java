@@ -73,11 +73,11 @@ public class SimulateUFF {
 						linearr[69-1]="A";
 						linearr[71-1]="210";
 					}
-					/*System.out.println("payment£º"+linearr[2-1]);
-					System.out.println("beneficiary code(payee role)£º"+linearr[43-1]);
-					System.out.println("Domestic/overseas£º"+linearr[39-1]);
-					System.out.println("purpose code£º"+linearr[43-1]);
-					System.out.println("Specific Payment Purpose 1st level£º"+linearr[69-1]);
+					/*System.out.println("paymentï¼š"+linearr[2-1]);
+					System.out.println("beneficiary code(payee role)ï¼š"+linearr[43-1]);
+					System.out.println("Domestic/overseasï¼š"+linearr[39-1]);
+					System.out.println("purpose codeï¼š"+linearr[43-1]);
+					System.out.println("Specific Payment Purpose 1st levelï¼š"+linearr[69-1]);
 					System.out.println("Specific Payment Purpose 2nd level:"+linearr[71-1]);
 					System.out.println("description"+linearr[44-1]);*/
 					String newLine="";

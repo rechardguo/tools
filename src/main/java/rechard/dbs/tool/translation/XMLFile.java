@@ -27,7 +27,7 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 /**
- * 使用java dom 来解析xml
+ * ???java dom ??????xml
  * @author rechard
  *
  */
@@ -40,9 +40,9 @@ public class XMLFile {
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 		//DOM parser instance 
 		DocumentBuilder builder = builderFactory.newDocumentBuilder(); 
-		//xml文件里有个dtd的文件存在，在加载的时候会去网络上下载，如果网络不好，就会报
+
 		//java.net.ConnectException: Connection timed out: connect
-		//这里用以下的代码先绕过
+		//???????????????????
 		builder.setEntityResolver(
 				new EntityResolver(){
 					public InputSource resolveEntity(String publicId, String systemId) throws SAXException, IOException
@@ -52,7 +52,7 @@ public class XMLFile {
 				}
 				);
 		File f = new File(fileName);
-		//这里要用UTF-8读取出来，类似“”会导致报错
+
 		InputSource is=new InputSource(new InputStreamReader (new FileInputStream(f),"UTF-8"));
 		document = builder.parse(is);
 		//get root element 
@@ -62,7 +62,6 @@ public class XMLFile {
 	public Comment createComment(String data){
 		return document.createComment(data);
 	}
-	//这个是针对struts 的tiles的xml定义，一般都有<put name="xxx" value="valxxx">,直接用put的name来取得
 	public Element findPutElement(String putkey){
 		NodeList nodeList = rootElement.getElementsByTagName("put"); 
 		if(nodeList != null){ 
@@ -77,7 +76,7 @@ public class XMLFile {
 		return null;
 	}
 
-	//这个是针对struts 的tiles的xml定义，一般都有<put name="xxx" value="valxxx">,直接用put的name来取得
+	//????????struts ??tiles??xml?????????<put name="xxx" value="valxxx">,?????put??name?????
 	public List findAllElement(String value){
 		List list = new ArrayList();
 		NodeList nodeList = rootElement.getElementsByTagName("put"); 
@@ -112,18 +111,18 @@ public class XMLFile {
 		TransformerFactory tf = TransformerFactory.newInstance();
 		Transformer transformer = tf.newTransformer();
 		DOMSource source = new DOMSource(document);
-		//生成出来的xml会每个节点一行
+		//?????????xml???????????
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-		//这里是加上 xml的doctype,里面都是一些DTD的定义
+		//????????? xml??doctype,????????DTD?????
 		transformer.setOutputProperty(javax.xml.transform.OutputKeys.DOCTYPE_PUBLIC, document.getDoctype().getPublicId());    
 		transformer.setOutputProperty(javax.xml.transform.OutputKeys.DOCTYPE_SYSTEM, document.getDoctype().getSystemId()); 
 		//PrintWriter pw = new PrintWriter(new FileOutputStream(fileName));
-		//保存会去的时候也需要用UTF-8编码来保存
+		//?????????????????UTF-8??????????
 		OutputStreamWriter os = new OutputStreamWriter (new FileOutputStream(fileName),"UTF-8");
 		StreamResult result = new StreamResult(os);
-		//保存xml
+		//????xml
 		transformer.transform(source, result);
-		System.out.println("XML文件"+fileName+"替换翻译成功!");
+		System.out.println("XML???"+fileName+"????????!");
 		os.flush();
 		os.close();
 	}
@@ -143,9 +142,9 @@ public class XMLFile {
 		//xmlFile.save();
 	}
 	/**
-	 * 在xml里的definition的name是不可能重复的，
-	 * 而不同的definition里的put的key是可以重复的，所以要先由definition的name找到 definiton再在
-	 * definiton的所有put里找到对应的value，如果没有就建立，如果有，就覆盖
+	 * ??xml???definition??name?????????????
+	 * ???????definition???put??key????????????????????definition??name??? definiton????
+	 * definiton??????put??????????value?????????????????????????
 	 * @param putvalueParentDefinition
 	 * @param putvalue
 	 */
@@ -154,7 +153,7 @@ public class XMLFile {
 		String putvalueParentDefinition = ele.getParentNode().getAttributes().getNamedItem("name").getNodeValue();
 		Element definitionNode = findDefenitionElement(putvalueParentDefinition);
 		if(definitionNode==null){
-			System.err.println("没有找到"+ele.getAttribute("name")+"的上级definition定义"+putvalueParentDefinition);
+			System.err.println("??????"+ele.getAttribute("name")+"?????definition????"+putvalueParentDefinition);
 		}else{
 			NodeList nodelists = definitionNode.getElementsByTagName("put"); 
 			if(nodelists != null){ 

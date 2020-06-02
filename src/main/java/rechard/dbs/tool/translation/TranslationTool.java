@@ -13,9 +13,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 /**
- * Ğ´µÄÒ»¸ö°´xlsxÀïÅäÖÃµÄ·­ÒëÀ´Ö±½ÓÌæ»»¶ÔÓ¦property»òxmlÀïµÄ·­Òë
- * µ±ÅäÖÃºÃxlsxºó£¬ĞŞ¸Ä45ĞĞµÄSheet sheet1 = wb.getSheetAt(1);
- * À´¶ÁÈ¡µ½²»Í¬µÄsheetÀïµÄÖµ²¢½øĞĞÅäÖÃ
+ * å†™çš„ä¸€ä¸ªæŒ‰xlsxé‡Œé…ç½®çš„ç¿»è¯‘æ¥ç›´æ¥æ›¿æ¢å¯¹åº”propertyæˆ–xmlé‡Œçš„ç¿»è¯‘
+ * å½“é…ç½®å¥½xlsxåï¼Œä¿®æ”¹45è¡Œçš„Sheet sheet1 = wb.getSheetAt(1);
+ * æ¥è¯»å–åˆ°ä¸åŒçš„sheeté‡Œçš„å€¼å¹¶è¿›è¡Œé…ç½®
  * 
  * @author rechard
  *
@@ -41,13 +41,13 @@ public class TranslationTool {
 		} else if (fileType.equals("xlsx")) {
 			wb = new XSSFWorkbook(stream);
 		} else {
-			System.out.println("ÄúÊäÈëµÄexcel¸ñÊ½²»ÕıÈ·");
+			System.out.println("æ‚¨è¾“å…¥çš„excelæ ¼å¼ä¸æ­£ç¡®");
 		}
-		//ÖØÒªµã£ºÕâÀï°´xlsxÀïµÄsheetÀ´¸Ä£¬±ÈÈçÎÒ¶¨ÒåµÄsheet1ÊÇproperty,sheet2ÊÇXML
+		//é‡è¦ç‚¹ï¼šè¿™é‡ŒæŒ‰xlsxé‡Œçš„sheetæ¥æ”¹ï¼Œæ¯”å¦‚æˆ‘å®šä¹‰çš„sheet1æ˜¯property,sheet2æ˜¯XML
 		Sheet sheet1 = wb.getSheetAt(1);
 		Row firstRow = null;
 		for (Row row : sheet1) {
-			//µÚÒ»ĞĞÊÇÎªÁË¿´·½±ã
+			//ç¬¬ä¸€è¡Œæ˜¯ä¸ºäº†çœ‹æ–¹ä¾¿
 			if(row.getRowNum()==0){
 				firstRow = row;
 				for (Cell cell : row) {

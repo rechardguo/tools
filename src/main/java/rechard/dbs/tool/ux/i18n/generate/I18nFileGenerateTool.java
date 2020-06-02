@@ -1,6 +1,5 @@
 package rechard.dbs.tool.ux.i18n.generate;
 
-import com.sun.deploy.net.proxy.ProxyType;
 import org.apache.commons.cli.*;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;

@@ -13,14 +13,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.w3c.dom.Element;
-/**
- * 写的一个按xlsx里配置的翻译来直接替换对应property或xml里的翻译
- * 当配置好xlsx后，修改45行的Sheet sheet1 = wb.getSheetAt(1);
- * 来读取到不同的sheet里的值并进行配置
- * 
- * @author rechard
- *
- */
+
+
 public class AdvanceTranslationTool {
 	static String filename="";
 	static String ROOT="D:\\code\\DBS_CB\\CORP_PSO_SRC";
@@ -42,13 +36,13 @@ public class AdvanceTranslationTool {
 		} else if (fileType.equals("xlsx")) {
 			wb = new XSSFWorkbook(stream);
 		} else {
-			System.out.println("您输入的excel格式不正确");
+			System.out.println("锟斤拷锟斤拷锟斤拷锟絜xcel锟斤拷式锟斤拷锟斤拷确");
 		}
-		//重要点：这里按xlsx里的sheet来改，比如我定义的sheet1是property,sheet2是XML
+		//锟斤拷要锟姐：锟斤拷锟斤按xlsx锟斤拷锟絪heet锟斤拷锟侥ｏ拷锟斤拷锟斤拷锟揭讹拷锟斤拷锟絪heet1锟斤拷property,sheet2锟斤拷XML
 		Sheet sheet1 = wb.getSheetAt(0);
 		Row firstRow = null;
 		for (Row row : sheet1) {
-			//第一行是为了看方便
+			//锟斤拷一锟斤拷锟斤拷为锟剿匡拷锟斤拷锟斤拷
 			if(row.getRowNum()==0){
 				firstRow = row;
 				for (Cell cell : row) {

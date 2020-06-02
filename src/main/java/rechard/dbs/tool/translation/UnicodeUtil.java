@@ -1,6 +1,6 @@
 package rechard.dbs.tool.translation;
 /**
- * ÍøÉÏÏÂÔØµÄunicode×ªÂë¹¤¾ß£¬ÖĞÎÄ¿ÉÒÔÖ±½ÓÓÃgbEncoding(final String gbString)Ö±½Ó×ª³öÀ´
+ * ç½‘ä¸Šä¸‹è½½çš„unicodeè½¬ç å·¥å…·ï¼Œä¸­æ–‡å¯ä»¥ç›´æ¥ç”¨gbEncoding(final String gbString)ç›´æ¥è½¬å‡ºæ¥
  * @author rechard
  *
  */
@@ -30,7 +30,7 @@ public class UnicodeUtil {
 			} else {   
 				charStr = dataStr.substring(start + 2, end);   
 			}   
-			char letter = (char) Integer.parseInt(charStr, 16); // 16½øÖÆparseÕûĞÎ×Ö·û´®¡£   
+			char letter = (char) Integer.parseInt(charStr, 16); // 16è¿›åˆ¶parseæ•´å½¢å­—ç¬¦ä¸²ã€‚   
 			buffer.append(new Character(letter).toString());   
 			start = end;   
 		}   
@@ -38,6 +38,6 @@ public class UnicodeUtil {
 	}
 	
 	public static void  main(String[]args){
-		System.out.println(gbEncoding("ÄãºÃ°¡£¡"));
+		System.out.println(gbEncoding("ä½ å¥½å•Šï¼"));
 	}
 }

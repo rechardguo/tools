@@ -31,7 +31,7 @@ public class Excel2SQL {
 			Row firstRow = null;
 			StringBuffer sb = new StringBuffer();
 			for (Row row : sheet1) {
-				//µÚÒ»ÐÐÊÇÎªÁË¿´·½±ã
+				//ç¬¬ä¸€è¡Œæ˜¯ä¸ºäº†çœ‹æ–¹ä¾¿
 				if(row.getRowNum()==0){
 					firstRow = row;
 					//for (Cell cell : row) 
