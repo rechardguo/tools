@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="./md5.js"></script>
+  <script>
+    function check(jsonObj) {
+      var obj = JSON.parse(jsonObj);
+      var x=obj.x;
+      delete obj.x;
+      obj=JSON.stringify(obj);
+      var x2 = md5(obj);
+      var x2salt = x2.charCodeAt(1)+x2.charCodeAt(x2.length-1);
+      var x2saltStr = x2salt+"";
+      //console.info(x2salt);
+      //console.info(x.substring(0,x.length-x2saltStr.length));
+      //console.info(x.substring(x.length-x2saltStr.length,x.length));
+      return x2==x.substring(0,x.length-x2saltStr.length) && x2saltStr==x.substring(x.length-x2saltStr.length,x.length);
+    }
+    var res=check(JSON.stringify({"name":"test","age":13,"x":"8a786858dee95ba78fa291a1da77d161146"}))
+    console.info(res)
+  </script>
+</head>
+<body>
+
+</body>
+</html>
