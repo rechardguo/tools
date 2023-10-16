@@ -41,9 +41,7 @@ public class JavaInvokejs {
 
     public void  testMD5() throws Exception {
         ObjectMapper om = getObjectMapper();
-        Foo foo = new Foo();
-        foo.setAge(13);
-        foo.setName("test");
+        Foo foo = getFoo();
         System.out.println("original json:"+ om.writeValueAsString(foo));
         byte[] digest  = MessageDigest.getInstance("md5").digest(om.writeValueAsBytes(foo));
         String md5Str = new BigInteger(1, digest).toString(16);
@@ -59,14 +57,12 @@ public class JavaInvokejs {
      */
     public void  testMD5WithSalt() throws Exception {
         ObjectMapper om = getObjectMapper();
-        Foo foo = new Foo();
-        foo.setAge(13);
-        foo.setName("test");
+        Foo foo = getFoo();
         System.out.println("original json:"+ om.writeValueAsString(foo));
         byte[] digest  = MessageDigest.getInstance("md5").digest(om.writeValueAsBytes(foo));
         String md5Str = new BigInteger(1, digest).toString(16);
         String salt = String.valueOf(md5Str.charAt(1) + md5Str.charAt(md5Str.length()-1));
-        System.out.println(salt);
+        System.out.println("salt:"+salt);
         foo.setX(md5Str+salt);
         System.out.println("add signature json:"+ om.writeValueAsString(foo));
         jsVerifyXMD5Salt(om.writeValueAsString(foo));
@@ -74,15 +70,20 @@ public class JavaInvokejs {
 
     public void testBase64() throws Exception {
         ObjectMapper om = getObjectMapper();
-        Foo foo = new Foo();
-        foo.setAge(13);
-        foo.setName("test");
+        Foo foo = getFoo();
         System.out.println("original json:"+ om.writeValueAsString(foo));
         byte[] bytes = om.writeValueAsBytes(foo);
         String x = new String(Base64.getEncoder().encode(bytes));
         foo.setX(x);
         System.out.println("add signature json:"+ om.writeValueAsString(foo));
         jsVerifyXBase64(om.writeValueAsString(foo));
+    }
+
+    private Foo getFoo() {
+        Foo foo = new Foo();
+        foo.setAge(13);
+        foo.setName("test");
+        return foo;
     }
 
     private static ObjectMapper getObjectMapper() {
